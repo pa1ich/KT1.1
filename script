@@ -1,0 +1,35 @@
+#!/bin/bash
+#Попытка создать скрипт на проверку первой буквы файла и добавления содержимого в другую папку 
+pwd 
+whoami
+
+SOURCE_DIR="/workspaces/KT1.1/Work/Кузнецов Юрий Павлович"
+RESULT_FILE="/workspaces/KT1.1/Work/Лабораторная работа №1/Result_three"
+
+touch "$RESULT_FILE"
+
+for item in "$SOURCE_DIR"/t*; do
+    if [ -e "$item" ]; then 
+        if [ -f "$item" ]; then
+            cat "$item" >> "$RESULT_FILE"
+        elif [ -d "$item" ]; then
+            echo "Папка: $item" >> "$RESULT_FILE"
+        fi
+    fi
+done
+
+echo "Скрипт завершен."
+echo "Начало Скрипта."
+
+info_=$(uname -a)
+
+date_=$(date)
+echo "" >> "$RESULT_FILE" 
+echo "" >> "$RESULT_FILE" 
+echo "$info_" >> "$RESULT_FILE"
+echo "" >> "$RESULT_FILE" 
+echo "" >> "$RESULT_FILE" 
+echo "Дата и время: $date_" >> "$RESULT_FILE"
+echo "" >> "$RESULT_FILE" 
+
+echo "Скрипт завершен"
